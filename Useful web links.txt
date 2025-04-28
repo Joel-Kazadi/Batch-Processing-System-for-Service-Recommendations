@@ -1,0 +1,5 @@
+Link to the data:
+https://www.kaggle.com/datasets/abdulmajid115/yelp-dataset-contains-1-million-rows
+
+Link to the repository:
+https://github.com/Joel-Kazadi/Batch-Processing-System-for-Service-Recommendations

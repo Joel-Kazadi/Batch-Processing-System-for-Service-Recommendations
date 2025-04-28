@@ -1,0 +1,15 @@
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: batch_db
+      MYSQL_USER: batch_user
+      MYSQL_PASSWORD: batch_password
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_batch_data:/var/lib/mysql
+
+volumes:
+  mysql_batch_data:
