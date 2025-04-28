@@ -39,7 +39,7 @@ The architecture uses:
 2. Run the batch processing script:
 
     ```
-    python process_batch.py --input-dir "path_to_your_csv_folder"
+    python process_batch.py --input-dir "path_to_the_csv_folder"
     ```
 
 ## Repository
