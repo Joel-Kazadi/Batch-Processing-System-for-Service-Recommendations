@@ -77,7 +77,7 @@ CREATE TABLE daily_establishment_data (
 
 ### 2. Prepare Raw Data
 
-Place your raw CSV files in the folder:
+Place the raw CSV files in the folder:
 
 ```bash
 ingestion/source_data/
