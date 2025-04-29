@@ -43,14 +43,14 @@ The architecture uses:
 
 ### 1. Build and start the full pipeline:
 
-    ```bash
-    docker-compose up --build
-    ```
+  ```bash
+  docker-compose up --build
+  ```
 
 ### 2. The dashboard will be available at:
-    ```
-    http://localhost:8501
-    ```
+  ```
+  http://localhost:8501
+  ```
 
 ## Before Running
 
@@ -103,6 +103,4 @@ All source codes are available at:
 
 ## Author
 
-- Joël K. Kazadi
-  MSc. Data Science
-  International University of Applied Sciences
+- Joël K. Kazadi, MSc. Data Science, International University of Applied Sciences
