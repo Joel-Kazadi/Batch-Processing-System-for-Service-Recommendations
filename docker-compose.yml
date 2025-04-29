@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: batch_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: batch_db
+      MYSQL_USER: batch_user
+      MYSQL_PASSWORD: batch_password
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  ingestion:
+    build: ./ingestion
+    container_name: ingestion_service
+    volumes:
+      - shared_data:/shared
+    command: ["python", "ingest.py"]
+
+  processing:
+    build: ./processing
+    container_name: spark_processing_service
+    depends_on:
+      - mysql
+      - ingestion
+    volumes:
+      - shared_data:/shared
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: batch_user
+      MYSQL_PASSWORD: batch_password
+      MYSQL_DB: batch_db
+    command: ["python", "process_batch.py"]
+
+  dashboard:
+    build: ./dashboard
+    container_name: dashboard_service
+    ports:
+      - "8501:8501"
+    depends_on:
+      - mysql
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: batch_user
+      MYSQL_PASSWORD: batch_password
+      MYSQL_DB: batch_db
+
+volumes:
+  mysql_data:
+  shared_data:
